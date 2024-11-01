@@ -3,9 +3,9 @@ exports.up = async function(knex) {
         CREATE TABLE EndUser(  
             id int IDENTITY(1,1) primary key,
             name nvarchar(200),
-            role nvarchar(20),
+            role nchar(20),
             username nchar(100),
-            password ntext,
+            password nchar(100),
             phone nchar(11),
             birthday date,
             address ntext
