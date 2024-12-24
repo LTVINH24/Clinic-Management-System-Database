@@ -1,10 +1,10 @@
 exports.up = async function(knex) {
     await knex.raw(`
-        ALTER TABLE MedicalExaminationForm ADD isExaminated nchar(5);
+        ALTER TABLE MedicalExaminationForm ADD isExaminated nchar(5) DEFAULT 'false';
         ALTER TABLE Prescription ADD nextExaminationDate DATE;
 
-        ALTER TABLE Medicine ADD isDeleted nchar(5);
-        ALTER TABLE EndUser ADD status nchar(6);
+        ALTER TABLE Medicine ADD isDeleted nchar(5) DEFAULT 'false';
+        ALTER TABLE EndUser ADD status nchar(6) DEFAULT 'active';
     `);
 };
 
