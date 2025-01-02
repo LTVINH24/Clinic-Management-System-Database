@@ -4,10 +4,16 @@
  */
 exports.seed = async function(knex) {
 
+  await knex('Bill').del();
+  await knex('PrescriptionDetail').del();
+  await knex('Prescription').del();
+  await knex('MedicalRecord').del();
+  await knex('MedicalExaminationForm').del();
   await knex('Doctor').del();
+  await knex('Patient').del();
+  await knex('Medicine').del();
   await knex('Specialty').del();
   await knex('EndUser').del();
-  await knex('Medicine').del();
 
   const users = await knex('EndUser').insert([
     {
@@ -256,7 +262,7 @@ exports.seed = async function(knex) {
     },
   ]);
   
-  const patient = await knex('Patient').insert([
+  const patients = await knex('Patient').insert([
     {
       name: "Nguyễn Văn Hùng",
       residentId: "098765432100",
@@ -264,7 +270,6 @@ exports.seed = async function(knex) {
       birthday: "2000-10-10",
       address: "Thủ Đức, tp.HCM",
       gender: "Male",
-      phone: "0987654321",
     },
     {
       name: "Nguyễn Văn Mạnh",
@@ -273,7 +278,6 @@ exports.seed = async function(knex) {
       birthday: "2004-10-10",
       address: "Quận 9, tp.HCM",
       gender: "Male",
-      phone: "0987654312",
     },
     {
       name: "Nguyễn Thị Thảo",
@@ -282,7 +286,6 @@ exports.seed = async function(knex) {
       birthday: "2000-12-10",
       address: "Bình Thạnh, tp.HCM",
       gender: "Female",
-      phone: "0909876543",
     },
     {
       name: "Trần Thị Hoa",
@@ -291,7 +294,6 @@ exports.seed = async function(knex) {
       birthday: "1995-05-15",
       address: "Quận 1, tp.HCM",
       gender: "Female",
-      phone: "0912345678",
     },
     {
       name: "Lê Minh Đức",
@@ -300,7 +302,6 @@ exports.seed = async function(knex) {
       birthday: "1988-08-20",
       address: "Quận 7, tp.HCM",
       gender: "Male",
-      phone: "0898765432",
     },
     {
       name: "Phạm Thanh Hà",
@@ -309,7 +310,6 @@ exports.seed = async function(knex) {
       birthday: "1992-03-25",
       address: "Tân Bình, tp.HCM",
       gender: "Female",
-      phone: "0976543210",
     },
     {
       name: "Hoàng Văn Nam",
@@ -318,19 +318,18 @@ exports.seed = async function(knex) {
       birthday: "1998-12-05",
       address: "Gò Vấp, tp.HCM",
       gender: "Male",
-      phone: "0865432109",
     },
   ]).returning('id');
   
-  const patientId = patient[0].id;
-  const patientId1 = patient[1].id;
-  const patientId2 = patient[2].id;
-  const patientId3 = patient[3].id;
-  const patientId4 = patient[4].id;
-  const patientId5 = patient[5].id;
-  const patientId6 = patient[6].id;
+  const patientId = patients[0].id;
+  const patientId1 = patients[1].id;
+  const patientId2 = patients[2].id;
+  const patientId3 = patients[3].id;
+  const patientId4 = patients[4].id;
+  const patientId5 = patients[5].id;
+  const patientId6 = patients[6].id;
   
-  const examinationForms = await knex('ExaminationForm').insert([
+  const examinationForms = await knex('MedicalExaminationForm').insert([
     {
       patientId: patientId,
       staffId: userIdStaff,
@@ -474,7 +473,7 @@ exports.seed = async function(knex) {
     }
   ]).returning('id');
   
-  const precriptions = await knex('Precription').insert([
+  const prescriptions = await knex('Prescription').insert([
     {
       time: "2025-01-03 15:00:00",
       medicalExaminationFormId: examinationForms[1].id,
@@ -495,39 +494,39 @@ exports.seed = async function(knex) {
     }
   ]).returning('id');
   
-  const precriptionDetails = await knex('PrecriptionDetail').insert([
+  const prescriptionDetails = await knex('PrescriptionDetail').insert([
     {
-      precriptionId: precriptions[0].id,
+      prescriptionId: prescriptions[0].id,
       medicineId: medicine[0].id,
       quantity: 2,
       dosage: "Uống 3 lần/ngày, mỗi lần 1 viên sau ăn",
     },
     {
-      precriptionId: precriptions[0].id,
+      prescriptionId: prescriptions[0].id,
       medicineId: medicine[3].id,
       quantity: 1,
       dosage: "Uống 2 lần/ngày, mỗi lần 1 viên sau ăn",
     },
     {
-      precriptionId: precriptions[1].id,
+      prescriptionId: prescriptions[1].id,
       medicineId: medicine[4].id,
       quantity: 1,
       dosage: "Uống 1 viên/ngày trước khi đi ngủ",
     },
     {
-      precriptionId: precriptions[1].id,
+      prescriptionId: prescriptions[1].id,
       medicineId: medicine[5].id,
       quantity: 1,
       dosage: "Uống 1 viên/ngày sau ăn sáng",
     },
     {
-      precriptionId: precriptions[2].id,
+      prescriptionId: prescriptions[2].id,
       medicineId: medicine[2].id,
       quantity: 1,
       dosage: "Uống 1 viên/ngày trước bữa sáng",
     },
     {
-      precriptionId: precriptions[2].id,
+      prescriptionId: prescriptions[2].id,
       medicineId: medicine[1].id,
       quantity: 1,
       dosage: "Uống 2 lần/ngày, mỗi lần 1 viên sau ăn",
@@ -536,19 +535,19 @@ exports.seed = async function(knex) {
   
   const bills = await knex('Bill').insert([
     {
-      precriptionId: precriptions[0].id,
+      prescriptionId: prescriptions[0].id,
       totalAmount: 55000,
       createdAt: "2025-01-03 15:00:00",
       isGetMedicine: true,
     },
     {
-      precriptionId: precriptions[1].id,
+      prescriptionId: prescriptions[1].id,
       totalAmount: 70000,
       createdAt: "2025-01-04 08:30:00",
       isGetMedicine: true,
     },
     {
-      precriptionId: precriptions[2].id,
+      prescriptionId: prescriptions[2].id,
       totalAmount: 80000,
       createdAt: "2025-01-06 15:30:00",
       isGetMedicine: true,
