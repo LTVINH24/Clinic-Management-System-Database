@@ -159,7 +159,7 @@ exports.seed = async function(knex) {
     { 
       name: "Paracetamol", 
       manufacturer: "Dược Hậu Giang", 
-      price: 15000, 
+      price: 1500, 
       quantity: 1000, 
       quantityImport: 1000,
       MfgDate: "2024-01-01", 
@@ -170,7 +170,7 @@ exports.seed = async function(knex) {
     { 
       name: "Amoxicillin", 
       manufacturer: "Imexpharm", 
-      price: 45000, 
+      price: 4500, 
       quantity: 500, 
       quantityImport: 500,
       MfgDate: "2024-01-15", 
@@ -181,7 +181,7 @@ exports.seed = async function(knex) {
     { 
       name: "Omeprazole", 
       manufacturer: "Pharmedic", 
-      price: 35000, 
+      price: 3500, 
       quantity: 800, 
       quantityImport: 800,
       MfgDate: "2024-02-01", 
@@ -192,7 +192,7 @@ exports.seed = async function(knex) {
     { 
       name: "Mefenamic acid", 
       manufacturer: "Dược phẩm TW3", 
-      price: 25000, 
+      price: 2500, 
       quantity: 600, 
       quantityImport: 600,
       MfgDate: "2024-02-15", 
@@ -203,7 +203,7 @@ exports.seed = async function(knex) {
     { 
       name: "Cetirizine", 
       manufacturer: "Dược Sài Gòn", 
-      price: 30000, 
+      price: 3000, 
       quantity: 700, 
       quantityImport: 700,
       MfgDate: "2024-01-20", 
@@ -214,7 +214,7 @@ exports.seed = async function(knex) {
     { 
       name: "Vitamin B Complex", 
       manufacturer: "OPC", 
-      price: 40000, 
+      price: 4000, 
       quantity: 400, 
       quantityImport: 400,
       MfgDate: "2024-03-01", 
