@@ -165,7 +165,7 @@ exports.seed = async function(knex) {
       MfgDate: "2024-01-01", 
       ExpDate: "2025-12-31",
       DateImport: "2024-01-10",
-      isDeleted: false
+      isDeleted: 'false'
     },
     { 
       name: "Amoxicillin", 
@@ -176,7 +176,7 @@ exports.seed = async function(knex) {
       MfgDate: "2024-01-15", 
       ExpDate: "2025-06-30",
       DateImport: "2024-01-20",
-      isDeleted: false
+      isDeleted: 'false'
     },
     { 
       name: "Omeprazole", 
@@ -187,7 +187,7 @@ exports.seed = async function(knex) {
       MfgDate: "2024-02-01", 
       ExpDate: "2025-09-30",
       DateImport: "2024-02-10",
-      isDeleted: false
+      isDeleted: 'false'
     },
     { 
       name: "Mefenamic acid", 
@@ -198,7 +198,7 @@ exports.seed = async function(knex) {
       MfgDate: "2024-02-15", 
       ExpDate: "2025-08-31",
       DateImport: "2024-02-20",
-      isDeleted: false
+      isDeleted: 'false'
     },
     { 
       name: "Cetirizine", 
@@ -209,7 +209,7 @@ exports.seed = async function(knex) {
       MfgDate: "2024-01-20", 
       ExpDate: "2025-07-31",
       DateImport: "2024-01-25",
-      isDeleted: false
+      isDeleted: 'false'
     },
     { 
       name: "Vitamin B Complex", 
@@ -220,11 +220,11 @@ exports.seed = async function(knex) {
       MfgDate: "2024-03-01", 
       ExpDate: "2025-10-31",
       DateImport: "2024-03-05",
-      isDeleted: false
+      isDeleted: 'false'
     }
   ]).returning('id');
   
-  await knex('Doctor').insert([
+  const doctors = await knex('Doctor').insert([
     {
       userId: userIdDoctor, 
       specialtyId: specialtyId, 
@@ -260,7 +260,7 @@ exports.seed = async function(knex) {
       specialtyId: specialtyId3, 
       room: 'P107',
     },
-  ]);
+  ])
   
   const patients = await knex('Patient').insert([
     {
@@ -334,118 +334,118 @@ exports.seed = async function(knex) {
       patientId: patientId,
       staffId: userIdStaff,
       doctorId: userIdDoctor,
-      date: "2025-01-01 10:00:00",
-      symptoms: "Đau bụng",
+      time: "2025-01-01 10:00:00",
+      symptom: "Đau bụng",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId5,
       staffId: userIdStaff2,
       doctorId: userIdDoctor5,
-      date: "2025-01-03 15:00:00",
-      symptoms: "Đau khớp gối, khó đi lại",
+      time: "2025-01-03 15:00:00",
+      symptom: "Đau khớp gối, khó đi lại",
       visitType: "New",
-      isExaminated: true,
+      isExaminated: 'true',
     },
     {
       patientId: patientId6,
       staffId: userIdStaff,
       doctorId: userIdDoctor6,
-      date: "2025-01-04 08:30:00",
-      symptoms: "Chóng mặt, buồn nôn",
+      time: "2025-01-04 08:30:00",
+      symptom: "Chóng mặt, buồn nôn",
       visitType: "New",
-      isExaminated: true,
+      isExaminated: 'true',
     },
     {
       patientId: patientId,
       staffId: userIdStaff1,
       doctorId: userIdDoctor,
-      date: "2025-01-04 13:45:00",
-      symptoms: "Đau dạ dày tái phát",
+      time: "2025-01-04 13:45:00",
+      symptom: "Đau dạ dày tái phát",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId1,
       staffId: userIdStaff2,
       doctorId: userIdDoctor1,
-      date: "2025-01-05 09:15:00",
-      symptoms: "Sốt nhẹ, mệt mỏi",
+      time: "2025-01-05 09:15:00",
+      symptom: "Sốt nhẹ, mệt mỏi",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId2,
       staffId: userIdStaff,
       doctorId: userIdDoctor2,
-      date: "2025-01-05 10:30:00",
-      symptoms: "Đau răng khôn",
+      time: "2025-01-05 10:30:00",
+      symptom: "Đau răng khôn",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId3,
       staffId: userIdStaff1,
       doctorId: userIdDoctor3,
-      date: "2025-01-05 14:00:00",
-      symptoms: "Dị ứng da, ngứa",
+      time: "2025-01-05 14:00:00",
+      symptom: "Dị ứng da, ngứa",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId4,
       staffId: userIdStaff2,
       doctorId: userIdDoctor4,
-      date: "2025-01-06 08:00:00",
-      symptoms: "Viêm xoang cấp",
+      time: "2025-01-06 08:00:00",
+      symptom: "Viêm xoang cấp",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId5,
       staffId: userIdStaff,
       doctorId: userIdDoctor5,
-      date: "2025-01-06 10:45:00",
-      symptoms: "Đau lưng mãn tính",
+      time: "2025-01-06 10:45:00",
+      symptom: "Đau lưng mãn tính",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId6,
       staffId: userIdStaff1,
       doctorId: userIdDoctor6,
-      date: "2025-01-06 15:30:00",
-      symptoms: "Rối loạn tiêu hóa",
+      time: "2025-01-06 15:30:00",
+      symptom: "Rối loạn tiêu hóa",
       visitType: "New",
-      isExaminated: true,
+      isExaminated: 'true',
     },
     {
       patientId: patientId,
       staffId: userIdStaff2,
       doctorId: userIdDoctor,
-      date: "2025-01-07 09:00:00",
-      symptoms: "Đau đầu migraine",
+      time: "2025-01-07 09:00:00",
+      symptom: "Đau đầu migraine",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId1,
       staffId: userIdStaff,
       doctorId: userIdDoctor1,
-      date: "2025-01-07 13:15:00",
-      symptoms: "Viêm họng cấp",
+      time: "2025-01-07 13:15:00",
+      symptom: "Viêm họng cấp",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     },
     {
       patientId: patientId2,
       staffId: userIdStaff1,
       doctorId: userIdDoctor2,
-      date: "2025-01-07 16:00:00",
-      symptoms: "Đau khớp vai",
+      time: "2025-01-07 16:00:00",
+      symptom: "Đau khớp vai",
       visitType: "New",
-      isExaminated: false,
+      isExaminated: 'false',
     }
   ]).returning('id');
   
@@ -478,19 +478,19 @@ exports.seed = async function(knex) {
       time: "2025-01-03 15:00:00",
       medicalExaminationFormId: examinationForms[1].id,
       nextExaminationDate: "2025-01-17 15:00:00",
-      isBilled: true,
+      isBilled: 'true',
     },
     {
       time: "2025-01-04 08:30:00",
       medicalExaminationFormId: examinationForms[2].id,
       nextExaminationDate: "2025-01-18 08:30:00",
-      isBilled: true,
+      isBilled: 'true',
     },
     {
       time: "2025-01-06 15:30:00",
       medicalExaminationFormId: examinationForms[9].id,
       nextExaminationDate: "2025-01-20 15:30:00",
-      isBilled: true,
+      isBilled: 'true',
     }
   ]).returning('id');
   
@@ -537,20 +537,20 @@ exports.seed = async function(knex) {
     {
       prescriptionId: prescriptions[0].id,
       totalAmount: 55000,
-      createdAt: "2025-01-03 15:00:00",
-      isGetMedicine: true,
+      createDate: "2025-01-03 15:00:00",
+      isGetMedicine: 'true',
     },
     {
       prescriptionId: prescriptions[1].id,
       totalAmount: 70000,
-      createdAt: "2025-01-04 08:30:00",
-      isGetMedicine: true,
+      createDate: "2025-01-04 08:30:00",
+      isGetMedicine: 'true',
     },
     {
       prescriptionId: prescriptions[2].id,
       totalAmount: 80000,
-      createdAt: "2025-01-06 15:30:00",
-      isGetMedicine: true,
+      createDate: "2025-01-06 15:30:00",
+      isGetMedicine: 'true',
     }
   ]);
 };
